@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '~> 2.6.3'
 
-  spec.add_dependency 'globalize'
   spec.add_dependency 'i18n'
   spec.add_dependency 'rails', '>= 4'
   spec.add_dependency 'rails-settings-cached'
