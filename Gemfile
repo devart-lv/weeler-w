@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'globalize', github: 'globalize/globalize'
 gem 'rails-controller-testing'
 
 # platform :jruby do
