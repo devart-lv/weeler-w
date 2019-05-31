@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'cache_sync/cache'
 
 module CacheSync
   class File < Cache
-
     MAX_AGE = 1
 
     @age = nil
@@ -15,11 +16,11 @@ module CacheSync
       end
 
       @version
-    rescue
+    rescue StandardError
       nil
     end
 
-    def write_version version
+    def write_version(version)
       ::File.write(Rails.root.join('public', 'system', 'weeler-cache-sync'), version)
       set_cache_expiration
     end
@@ -30,12 +31,12 @@ module CacheSync
 
     private
 
-    def cache_expired?
-      Time.now.to_f - @age.to_i > MAX_AGE
-    end
+      def cache_expired?
+        Time.now.to_f - @age.to_i > MAX_AGE
+      end
 
-    def set_cache_expiration
-      @age = Time.now.to_f
-    end
+      def set_cache_expiration
+        @age = Time.now.to_f
+      end
   end
 end
