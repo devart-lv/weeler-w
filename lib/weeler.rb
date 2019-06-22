@@ -81,6 +81,8 @@ module Weeler
       end
     end
     build_main_menu
+  rescue ActiveRecord::NoDatabaseError
+    puts 'skipped weeler setup: no database present'
   end
 
   def self.build_main_menu
