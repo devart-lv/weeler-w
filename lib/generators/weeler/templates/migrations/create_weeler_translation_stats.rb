@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWeelerTranslationStats < ActiveRecord::Migration[4.2]
   def change
     create_table :weeler_translation_stats do |t|
