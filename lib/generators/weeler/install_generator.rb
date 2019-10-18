@@ -47,10 +47,10 @@ module Weeler
 
       class_option :routes, :desc => "Generate routes", :type => :boolean, :default => true
       def add_weeler_routes
-        weeler_routes  = "mount_weeler_at \"weeler\" do \n"
-        weeler_routes << "  # weeler_resources :example, include_in_weeler_menu: true \n"
-        weeler_routes << "  # Also you orderable and imageable concerns \n"
-        weeler_routes << "end \n"
+        weeler_routes  = "mount_weeler_at \"weeler\" do\n"
+        weeler_routes << "  # weeler_resources :example, include_in_weeler_menu: true\n"
+        weeler_routes << "  # Also you orderable and imageable concerns\n"
+        weeler_routes << "end\n"
         route weeler_routes
       end
 
