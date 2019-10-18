@@ -1,5 +1,6 @@
-Weeler.setup do |config|
+# frozen_string_literal: true
 
+Weeler.setup do |config|
   # Use Weeler I18n transaltion engine (ActiveRecord store).
   #
   # config.use_weeler_i18n = true
@@ -12,8 +13,10 @@ Weeler.setup do |config|
   # config.cache_sync = CacheSync::Settings.new
   #
   # available options are:
-  # => CacheSync::Settings.new     # Needs setting migration to be run. For legacy support only - doesn't sync caches accross instances.
-  # => CacheSync::File.new         # Needs Rails.root.join('public', 'system') folder to be present. Folder needs to be shared accross instances.
+  # => CacheSync::Settings.new     # Needs setting migration to be run. For legacy support only - doesn't sync
+  #                                # caches accross instances.
+  # => CacheSync::File.new         # Needs Rails.root.join('public', 'system') folder to be present. Folder needs
+  #                                # to be shared accross instances.
   # => CacheSync::Redis.new        # Needs redis server. Redis server needs to be shared accross instances.
 
   # Require user method weeler use in before filter. (e.g. require_user)
@@ -29,7 +32,7 @@ Weeler.setup do |config|
   # config.content_menu_items = []
 
   # If you don't want to create model in your app and use only single page CMS, then you should use this property.
-  # e.g. {about: ['about_us.title', 'about_us.about_text_html', 'about_us.our_company', 'about_us.our_company_text_html']}
+  # e.g. {about: ['about_us.title', 'about_us.about_text_html', 'about_us.company', 'about_us.company_text_html']}
   #
   #
   # config.static_sections = [] # Menu items in Content section under Static. Resourses uses I18n translaitons
@@ -41,6 +44,6 @@ Weeler.setup do |config|
   # You can exclude translation groups from weeler administration
   # By default theres already excluded [:activerecord, :attributes, :helpers, :views, :i18n, :weeler]
   #
-  # config.excluded_i18n_groups += ["number", "date", "scopes", "named_routes", "named_routes_path", "path_names", "errors", "routes"]
-
+  # config.excluded_i18n_groups += ["number", "date", "scopes", "named_routes", "named_routes_path",
+  #                                 "path_names", "errors", "routes"]
 end
