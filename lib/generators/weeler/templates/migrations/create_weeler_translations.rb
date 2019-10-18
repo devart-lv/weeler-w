@@ -7,7 +7,7 @@ class CreateWeelerTranslations < ActiveRecord::Migration[4.2]
       t.string :key
       t.text   :value
       t.text   :interpolations
-      t.boolean :is_proc, :default => false
+      t.boolean :is_proc, default: false
 
       t.timestamps
     end
