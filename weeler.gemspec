@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'jquery-ui-rails'
   spec.add_dependency 'kaminari'
 
-  spec.add_dependency 'axlsx', '~> 2'
+  spec.add_dependency 'axlsx', '>= 2'
   spec.add_dependency 'redis'
   spec.add_dependency 'roo'
   spec.add_dependency 'rubyzip'
