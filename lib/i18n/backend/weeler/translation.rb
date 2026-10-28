@@ -51,8 +51,8 @@ module I18n
 
         self.table_name = 'weeler_translations'
 
-        serialize :value
-        serialize :interpolations, Array
+        serialize :value, coder: YAML
+        serialize :interpolations, type: Array, coder: YAML
 
         scope :except_key, lambda { |key| where("key NOT LIKE ?", "#{key}%") }
 

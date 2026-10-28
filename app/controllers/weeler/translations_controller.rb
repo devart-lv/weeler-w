@@ -30,7 +30,7 @@ module Weeler
     def update
       @translation = I18n::Backend::Weeler::Translation.find(params[:id])
 
-      if @translation.update_attributes(translation_params)
+      if @translation.update(translation_params)
         Weeler.cache_sync.write Time.now.to_f
         redirect_to ({ action: :edit, id: @translation }), flash: { success: "Translation updated." }
       else

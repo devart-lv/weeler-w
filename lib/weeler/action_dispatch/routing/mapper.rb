@@ -9,9 +9,9 @@ module Weeler
         # Options:
         # * <tt>include_in_weeler_menu: true</tt> to include this resource in content section.
         #
-        def weeler_resources(*args, &block)
-          add_menu_item args[0] if args[0].present? && args[1].present? && args[1][:include_in_weeler_menu] == true
-          resources *args do
+        def weeler_resources(*args, **options, &block)
+          add_menu_item args[0] if options.delete(:include_in_weeler_menu)
+          resources(*args, **options) do
             yield if block_given?
           end
         end
@@ -28,7 +28,7 @@ module Weeler
             namespace :weeler, :path => nil do
               mount_configuration_controllers
 
-              weeler_resources :static_sections
+              weeler_resources :static_sections, only: [:show, :update]
 
               resources :seos, :only => [:update]
 
@@ -57,7 +57,7 @@ module Weeler
               get :usage_stats
             end
           end
-          resources :seo_items
+          resources :seo_items, only: [:index, :edit, :update]
           resources :settings, :only => [:index, :edit, :update]
         end
 

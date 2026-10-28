@@ -14,28 +14,34 @@ Gem::Specification.new do |spec|
   spec.homepage      = ''
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  spec.files = Dir.chdir(__dir__) do
+    if File.exist?('.git')
+      IO.popen(['git', 'ls-files', '-z'], &:read).split("\0")
+    else
+      Dir.glob('{app,config,lib}/**/*').select { |path| File.file?(path) }
+    end
+  end
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.7.0'
+  spec.required_ruby_version = '>= 3.2.0'
 
   spec.add_dependency 'i18n'
-  spec.add_dependency 'rails', '>= 4'
-  spec.add_dependency 'rails-settings-cached'
+  spec.add_dependency 'rails', '>= 7.2', '< 9'
+  spec.add_dependency 'rails-settings-cached', '~> 2.9'
 
   spec.add_dependency 'haml'
   spec.add_dependency 'jquery-ui-rails'
   spec.add_dependency 'kaminari'
 
-  spec.add_dependency 'axlsx', '>= 2'
+  spec.add_dependency 'caxlsx', '~> 4.4'
   spec.add_dependency 'redis'
   spec.add_dependency 'roo'
   spec.add_dependency 'rubyzip'
   spec.add_dependency 'globalize'
 
-  spec.add_development_dependency 'bundler', '~> 1.6'
+  spec.add_development_dependency 'bundler', '>= 2.6'
   spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'factory_girl_rails'
   spec.add_development_dependency 'rake'
